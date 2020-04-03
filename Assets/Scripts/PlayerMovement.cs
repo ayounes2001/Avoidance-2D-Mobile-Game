@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
    public Joystick joystick;
    public Joystick ladderJoystick;
+   //Animator Code
+   public Animator animator;
 
    //Player Health
   public int playerHealth;
@@ -63,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
         //velX = joystick.Horizontal * moveSpeed;
         velY = rb.velocity.y;
         rb.velocity = new Vector2(velX * moveSpeed, velY);
+        animator.SetFloat("Speed",Mathf.Abs(joystick.Horizontal));
+        
         LadderMovement();
         Jump();
 
@@ -100,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
              jumpTimeCounter = jumpTime;
              //rb will jump go up at a certain speed
              rb.velocity = Vector2.up * jumpForce;
+             animator.SetBool("New Bool",true);
          }
 
          if (verticalMove >= .5f && isJumping ==true)
@@ -113,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
              else
              {
                  isJumping = false;
+                
              }
             
          }
@@ -120,7 +126,9 @@ public class PlayerMovement : MonoBehaviour
          if (verticalMove >= .5f)
          {
              isJumping = false;
+             animator.SetBool("New Bool",false); //change to its Jumping bool unity is ass
          }
+        
      }
 
      public void LadderMovement()
