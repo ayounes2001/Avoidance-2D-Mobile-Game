@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
    public Joystick ladderJoystick;
    //Animator Code
    public Animator animator;
+   
+   public int damage;
 
    //Player Health
   public int playerHealth;
@@ -43,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-       
+        GetComponent<Health>().deathEvent += Death;
+
     }
 
     // Update is called once per frame
@@ -104,7 +107,6 @@ public class PlayerMovement : MonoBehaviour
              jumpTimeCounter = jumpTime;
              //rb will jump go up at a certain speed
              rb.velocity = Vector2.up * jumpForce;
-             animator.SetBool("New Bool",true);
          }
 
          if (verticalMove >= .5f && isJumping ==true)
@@ -126,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
          if (verticalMove >= .5f)
          {
              isJumping = false;
-             animator.SetBool("New Bool",false); //change to its Jumping bool unity is ass
          }
         
      }
@@ -168,14 +169,15 @@ public class PlayerMovement : MonoBehaviour
 
       void OnTriggerEnter2D(Collider2D other)
      {
-         if (other.CompareTag("Goop") )
+         if (other.gameObject.GetComponent<Health>() != null)
          {
-             Die();
+            
+             other.gameObject.GetComponent<Health>().ChangeHealth(-damage);
          }
         
      }
 
-     void Die()
+     void Death(Health health)
      {
          //Destroy(gameObject);
          Debug.Log("Dead!");

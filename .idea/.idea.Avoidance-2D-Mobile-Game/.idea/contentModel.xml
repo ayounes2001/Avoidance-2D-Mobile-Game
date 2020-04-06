@@ -154,11 +154,18 @@
         </e>
         <e p="Score.cs" t="Include" />
         <e p="Scripts" t="Include">
-          <e p="CameraFollow.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
+          <e p="Game Related" t="Include">
+            <e p="CameraFollow.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
+            <e p="Health.cs" t="Include" />
+            <e p="UIManager.cs" t="Include" />
+            <e p="UnitSpawner.cs" t="Include" />
+          </e>
           <e p="LevelGeneration.cs" t="Include" />
-          <e p="PlayerMovement.cs" t="Include" />
-          <e p="UIManager.cs" t="Include" />
+          <e p="Player Related" t="Include">
+            <e p="PlayerMovement.cs" t="Include" />
+          </e>
         </e>
         <e p="Standard Assets" t="Include">
           <e p="2D" t="Include">

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float moveSpeed;
+    /*public float moveSpeed;
     private Rigidbody2D rb;
     private PlayerMovement target;
     private Vector2 moveDirection;
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
        
-    }
+    }*/
 
     
 }
